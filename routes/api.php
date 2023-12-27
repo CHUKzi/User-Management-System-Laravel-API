@@ -10,9 +10,11 @@ Route::middleware('api')->prefix('/v1')->group(function () {
     // User Authentication
     Route::prefix('/users')->group(function () {
         Route::get('/', [UsersController::class, 'getUsers']);
-
-/*         Route::post('/store', [UsersController::class, 'store']);
-        Route::post('/auth', [UsersController::class, 'auth']);
-        Route::post('/logout', [UsersController::class, 'logout'])->middleware('auth:api'); */
+        Route::get('/find', [UsersController::class, 'getUser']);
+        Route::post('/store', [UsersController::class, 'store']);
+        Route::put('/update/{id}', [UsersController::class, 'update']);
+        Route::delete('/delete/{id}', [UsersController::class, 'destroy']);
+        // Route::post('/auth', [UsersController::class, 'auth']);
+        // Route::post('/logout', [UsersController::class, 'logout'])->middleware('auth:api');
     });
 });
