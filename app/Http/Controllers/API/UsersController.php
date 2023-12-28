@@ -64,7 +64,9 @@ class UsersController extends AppBaseController
                 $user->last_name = $request->input('last_name');
                 $user->email = $request->input('email');
                 $user->mobile = $request->input('mobile');
-                $user->password = bcrypt($request->input('password'));
+                if($request->input('password')){
+                    $user->password = bcrypt($request->input('password'));
+                }
                 $user->save();
                 return $this->sendResponse(true, $user, 'User Updated Successfully!', null);
             }
